@@ -56,7 +56,7 @@ namespace SistemaLocacaoVeiculo
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("Erroa ao salvar os dados" + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Erro ao salvar os dados" + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally { mv.Desconectar(); }
         }

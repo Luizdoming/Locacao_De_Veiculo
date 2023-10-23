@@ -44,7 +44,7 @@ namespace SistemaLocacaoVeiculo
         {
             using (frm_Fatura fatura = new frm_Fatura())
             {
-                String formatada = ListGridview.SelectedItems[0].SubItems[8].Text;
+                string formatada = ListGridview.SelectedItems[0].SubItems[8].Text;
 
                 double valor_Total = Double.Parse(formatada.Replace("R$", ""));
                 int Qtd_Dias = int.Parse(ListGridview.SelectedItems[0].SubItems[6].Text);

@@ -5,15 +5,6 @@ namespace SistemaLocacaoVeiculo
 {
     public partial class frmAlugarVeiculos : Form
     {
-        //public string NomeCliente;
-        //public string Placa;
-        //public string Modelo;
-        //public string Endereco;
-        //public string ValorDiaria;
-        //public int QtdDias;
-        //public string DataEntrega;
-        //public double ValorTotal;
-
 
         public frmAlugarVeiculos()
         {
@@ -22,11 +13,17 @@ namespace SistemaLocacaoVeiculo
 
         private void frmCadVeiculos_Load(object sender, EventArgs e)
         {
+            //Campos para permitir somente leitura dos dados, não a inserção
             this.txt_TotalLocacao.ReadOnly = true;
+            this.txt_CategoriaLocaca.ReadOnly = true;
+            this.txt_MarcaLocacao.ReadOnly = true;
+            this.txt_PlacaLocacao.ReadOnly = true;
+            this.txt_AnoLocacao.ReadOnly = true;
+            this.txt_CorLocacao.ReadOnly = true;
+            this.txt_DiariaLocacao.ReadOnly = true;
+            this.txt_EnderecoLocacao.MaxLength = 30;
+            this.txt_NomeClienteLocacao.MaxLength = 30;
             txt_NomeClienteLocacao.Focus();
-            //this.txt_DiariaLocacao.ReadOnly = true;
-            //this.Text = DateTime.Now.ToString("F");
-            //this.lbl_titulo_Principal.Text = "LD - Locação de veiculo";
         }
 
         private void btn_abrir_tela_veiculosCadastrados_Click(object sender, EventArgs e)

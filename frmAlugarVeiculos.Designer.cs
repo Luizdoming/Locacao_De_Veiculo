@@ -188,6 +188,7 @@
             this.txt_NomeClienteLocacao.Name = "txt_NomeClienteLocacao";
             this.txt_NomeClienteLocacao.Size = new System.Drawing.Size(244, 27);
             this.txt_NomeClienteLocacao.TabIndex = 0;
+            this.txt_NomeClienteLocacao.Tag = "Letras";
             this.txt_NomeClienteLocacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_EnderecoLocacao
@@ -202,6 +203,7 @@
             this.txt_EnderecoLocacao.Name = "txt_EnderecoLocacao";
             this.txt_EnderecoLocacao.Size = new System.Drawing.Size(244, 27);
             this.txt_EnderecoLocacao.TabIndex = 1;
+            this.txt_EnderecoLocacao.Tag = "Letras";
             this.txt_EnderecoLocacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label15
