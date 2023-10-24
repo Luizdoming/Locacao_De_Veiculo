@@ -21,8 +21,9 @@ namespace SistemaLocacaoVeiculo
         public string Cor { get; set; }
         public int Ano { get; set; }
         public double Diaria { get; set; }
-        public bool result { get; set; }
-        #endregion 
+        public bool Result { get; set; }
+
+        #endregion
 
         public void Conectar()
         {
@@ -34,16 +35,38 @@ namespace SistemaLocacaoVeiculo
             con.Close();
         }
 
-        public void Cadastra_Veiculos(string sql)
+        public void Cadastra_Veiculos(string sqlVerifica, string sql_salvarDados)
         {
             try
             {
+                //Verificando se o registro ja existe
+                //-----------------------------------
                 con.Open();
-                SQLiteCommand cmd = new SQLiteCommand(sql, con);
-                cmd.Connection = con;
+                SQLiteCommand cmdVerifica = new SQLiteCommand(sqlVerifica, con);
+                SQLiteDataReader dr;
+                dr = cmdVerifica.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    if (dr["Placa"].ToString() == Placa)
+                    {
+                        MessageBox.Show("Veiculo já está cadastrado...", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        con.Close();
+                        cmdVerifica.Dispose();
+                        return;
+                    }
+                }
+
+                //Se passar pela verificação salvamos os dados
+                SQLiteCommand cmd = new SQLiteCommand(sql_salvarDados, con)
+                {
+                    Connection = con
+                };
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 con.Close();
+                MessageBox.Show("Veiculo cadastrado com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (SQLiteException ex)
             {
@@ -152,7 +175,7 @@ namespace SistemaLocacaoVeiculo
                         Diaria = double.Parse(dr["Diaria"].ToString());
                         Placa = dr["Placa"].ToString();
                     }
-                    cmd.Dispose();  // se deixar este comando ativo, ele irá blokear o banco de dados
+                    cmd.Dispose();  // se deixar este comando ativo, ele irá bloquear o banco de dados
                                     // impedindo de realizar outras tarefas simultaniamente
                     Desconectar();
                 }

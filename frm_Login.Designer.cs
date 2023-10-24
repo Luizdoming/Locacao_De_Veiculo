@@ -175,7 +175,7 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2TextBox txt_login_pass;
         private Guna.UI2.WinForms.Guna2TextBox txt_login_user;
-        private Guna.UI2.WinForms.Guna2MessageDialog Messagem;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        public Guna.UI2.WinForms.Guna2MessageDialog Messagem;
     }
 }

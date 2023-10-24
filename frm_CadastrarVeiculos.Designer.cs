@@ -228,8 +228,8 @@
             this.txt_valor_diaria_cadastro.Size = new System.Drawing.Size(118, 27);
             this.txt_valor_diaria_cadastro.TabIndex = 4;
             this.txt_valor_diaria_cadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_valor_diaria_cadastro.TextChanged += new System.EventHandler(this.txt_valor_diaria_cadastro_TextChanged);
-            this.txt_valor_diaria_cadastro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_valor_diaria_cadastro_KeyPress);
+            this.txt_valor_diaria_cadastro.TextChanged += new System.EventHandler(this.Txt_valor_diaria_cadastro_TextChanged);
+            this.txt_valor_diaria_cadastro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_valor_diaria_cadastro_KeyPress);
             // 
             // toolTip1
             // 
@@ -253,7 +253,7 @@
             this.btn_visualizarVeiculos.Text = "       Veiculos";
             this.toolTip1.SetToolTip(this.btn_visualizarVeiculos, "Visualiza os Veiculos Cadastrados.\r\n");
             this.btn_visualizarVeiculos.UseVisualStyleBackColor = false;
-            this.btn_visualizarVeiculos.Click += new System.EventHandler(this.btn_visualizarVeiculos_Click);
+            this.btn_visualizarVeiculos.Click += new System.EventHandler(this.Btn_visualizarVeiculos_Click);
             // 
             // btn_editar_cadastrados
             // 
@@ -271,7 +271,7 @@
             this.btn_editar_cadastrados.Text = "      Editar";
             this.toolTip1.SetToolTip(this.btn_editar_cadastrados, "Atualizar ou Editar um veiculo cadastrado.\r\n");
             this.btn_editar_cadastrados.UseVisualStyleBackColor = false;
-            this.btn_editar_cadastrados.Click += new System.EventHandler(this.btn_editar_cadastrados_Click);
+            this.btn_editar_cadastrados.Click += new System.EventHandler(this.Btn_editar_cadastrados_Click);
             // 
             // button1
             // 
@@ -289,7 +289,7 @@
             this.button1.Text = "      Salvar";
             this.toolTip1.SetToolTip(this.button1, "Salvar informações no banco de dados.");
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Cbo_Placa
             // 
@@ -371,7 +371,7 @@
             this.MaximizeBox = false;
             this.Name = "frm_CadastrarVeiculos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frm_CadastrarVeiculos_Load);
+            this.Load += new System.EventHandler(this.Frm_CadastrarVeiculos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

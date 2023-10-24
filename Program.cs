@@ -13,7 +13,7 @@ namespace SistemaLocacaoVeiculo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAlugarVeiculos());
+            Application.Run(new frm_Splash());
         }
     }
 }

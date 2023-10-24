@@ -368,7 +368,7 @@
             0,
             0,
             0});
-            this.numeric_Alugar_Veiculos.ValueChanged += new System.EventHandler(this.numeric_Alugar_Veiculos_ValueChanged);
+            this.numeric_Alugar_Veiculos.ValueChanged += new System.EventHandler(this.Numeric_Alugar_Veiculos_ValueChanged);
             // 
             // guna2ControlBox1
             // 
@@ -454,7 +454,7 @@
             this.guna2Button1.TabIndex = 12;
             this.guna2Button1.Text = "    Alugar";
             this.toolTip1.SetToolTip(this.guna2Button1, "Aluga um Veiculo ");
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.guna2Button1.Click += new System.EventHandler(this.Guna2Button1_Click);
             // 
             // btn_AbrirF_Valugados
             // 
@@ -481,7 +481,7 @@
             this.btn_AbrirF_Valugados.TabIndex = 11;
             this.btn_AbrirF_Valugados.Text = "      Alugados";
             this.toolTip1.SetToolTip(this.btn_AbrirF_Valugados, "Visualizar Veiculos Alugados\r\n\r\n");
-            this.btn_AbrirF_Valugados.Click += new System.EventHandler(this.btn_AbrirF_Valugados_Click);
+            this.btn_AbrirF_Valugados.Click += new System.EventHandler(this.Btn_AbrirF_Valugados_Click);
             // 
             // btn_abrir_tela_veiculosCadastrados
             // 
@@ -499,7 +499,7 @@
             this.btn_abrir_tela_veiculosCadastrados.Text = "     Search";
             this.toolTip1.SetToolTip(this.btn_abrir_tela_veiculosCadastrados, "Pesquisar um Veiculo");
             this.btn_abrir_tela_veiculosCadastrados.UseVisualStyleBackColor = false;
-            this.btn_abrir_tela_veiculosCadastrados.Click += new System.EventHandler(this.btn_abrir_tela_veiculosCadastrados_Click);
+            this.btn_abrir_tela_veiculosCadastrados.Click += new System.EventHandler(this.Btn_abrir_tela_veiculosCadastrados_Click);
             // 
             // frmAlugarVeiculos
             // 
@@ -546,7 +546,7 @@
             this.Name = "frmAlugarVeiculos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "....";
-            this.Load += new System.EventHandler(this.frmCadVeiculos_Load);
+            this.Load += new System.EventHandler(this.FrmCadVeiculos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numeric_Alugar_Veiculos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

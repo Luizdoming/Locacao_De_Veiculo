@@ -30,7 +30,7 @@ namespace SistemaLocacaoVeiculo
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             ConexaoBanco mv = new ConexaoBanco();
 
@@ -41,7 +41,7 @@ namespace SistemaLocacaoVeiculo
                 {
                     if (controles is TextBox)
                     {
-                        if (controles.Text == String.Empty)
+                        if (controles.Text == string.Empty)
                         {
                             MessageBox.Show("O campo é obrigatorio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             controles.Focus();
@@ -51,15 +51,18 @@ namespace SistemaLocacaoVeiculo
                 }
 
                 #region Salvar os dados No data base
-                string sql;
+                string sqlverifica, sqlSavar;
                 decimal valor = Convert.ToDecimal(txt_valor_diaria_cadastro.Text);
                 string result = String.Format("{0:C2}", txt_valor_diaria_cadastro.Text);
 
-                sql = "INSERT INTO Veiculos (Marca, Modelo, Categoria, Placa, Cor, Ano, Diaria)" +
+                sqlverifica = "SELECT Placa FROM Veiculos WHERE Placa ='" + txtPlaca_Veiculo.Text + "'";
+                mv.Placa = txtPlaca_Veiculo.Text;
+
+                sqlSavar = "INSERT INTO Veiculos (Marca, Modelo, Categoria, Placa, Cor, Ano, Diaria)" +
                     "VALUES ('" + txt_Marca_Cadastra.Text + "', '" + txtModelo_Veiculo.Text + "', '" + txtCategoria_Veiculo.Text + "', '" + txtPlaca_Veiculo.Text + "', '" + txtCor_Veiculo.Text + "', '" + Convert.ToInt16(txtAnoFabricacao_Veiculo.Text) + "', '" + result + "')";
 
-                mv.Cadastra_Veiculos(sql);
-                MessageBox.Show("Veiculo cadastrado com sucesso!", "OK!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mv.Cadastra_Veiculos(sqlverifica, sqlSavar);
+
                 #endregion
 
                 //Limpando os controles TextBox
@@ -84,8 +87,9 @@ namespace SistemaLocacaoVeiculo
             }
         }
 
-        private void frm_CadastrarVeiculos_Load(object sender, EventArgs e)
+        private void Frm_CadastrarVeiculos_Load(object sender, EventArgs e)
         {
+
             txt_Marca_Cadastra.CharacterCasing = CharacterCasing.Upper;
             txt_Marca_Cadastra.CharacterCasing = CharacterCasing.Upper;
             txtCategoria_Veiculo.CharacterCasing = CharacterCasing.Upper;
@@ -96,7 +100,7 @@ namespace SistemaLocacaoVeiculo
             mv.AdcionarPlacasNaCombobox(Cbo_Placa);
         }
 
-        private void btn_visualizarVeiculos_Click(object sender, EventArgs e)
+        private void Btn_visualizarVeiculos_Click(object sender, EventArgs e)
         {
             using (frm_Veiculos_Cadastrados frm = new frm_Veiculos_Cadastrados())
             {
@@ -104,7 +108,7 @@ namespace SistemaLocacaoVeiculo
             }
         }
 
-        private void btn_editar_cadastrados_Click(object sender, EventArgs e)
+        private void Btn_editar_cadastrados_Click(object sender, EventArgs e)
         {
             ConexaoBanco mv = new ConexaoBanco();
 
@@ -121,12 +125,22 @@ namespace SistemaLocacaoVeiculo
             }
             try
             {
-                mv.Placa = txtPlaca_Veiculo.Text.Trim(); mv.Fabricante = txt_Marca_Cadastra.Text.Trim();
-                mv.Cor = txtCor_Veiculo.Text.Trim(); mv.Diaria = double.Parse(txt_valor_diaria_cadastro.Text.Trim());
-                mv.Ano = int.Parse(txtAnoFabricacao_Veiculo.Text.Trim()); mv.Categoria = txtCategoria_Veiculo.Text.Trim();
-                mv.Modelo = txtModelo_Veiculo.Text.Trim();
-                mv.EditarVeiculosCadastrados();
-                LimparCampos();
+                if (Guna.UI2.WinForms.MessageDialog.Show(this, "Deseja atualizar este veiculo ?", "Atenção", Guna.UI2.WinForms.MessageDialogButtons.OKCancel, Guna.UI2.WinForms.MessageDialogIcon.Question,
+                    Guna.UI2.WinForms.MessageDialogStyle.Dark) == DialogResult.OK)
+                {
+
+                    mv.Placa = txtPlaca_Veiculo.Text.Trim(); mv.Fabricante = txt_Marca_Cadastra.Text.Trim();
+                    mv.Cor = txtCor_Veiculo.Text.Trim(); mv.Diaria = double.Parse(txt_valor_diaria_cadastro.Text.Trim());
+                    mv.Ano = int.Parse(txtAnoFabricacao_Veiculo.Text.Trim()); mv.Categoria = txtCategoria_Veiculo.Text.Trim();
+                    mv.Modelo = txtModelo_Veiculo.Text.Trim();
+                    mv.EditarVeiculosCadastrados();
+                    LimparCampos();
+
+                    //Mensagem personalizada
+                    Guna.UI2.WinForms.MessageDialog.Show(this, "Dados atualizado com sucesso!", "Aviso!", Guna.UI2.WinForms.MessageDialogButtons.OK, Guna.UI2.WinForms.MessageDialogIcon.Information, Guna.UI2.WinForms.MessageDialogStyle.Dark);
+                }
+                else { return; }
+
             }
             catch
             {
@@ -140,7 +154,7 @@ namespace SistemaLocacaoVeiculo
             ConexaoBanco mv = new ConexaoBanco();
             try
             {
-                if (Cbo_Placa.Text != "")
+                if (Cbo_Placa.Text != "" || Cbo_Placa.SelectedItem.ToString() != null)
                 {
                     mv.Placa = Cbo_Placa.Text;
                     mv.BuscarDadosParaEditar();
@@ -177,20 +191,21 @@ namespace SistemaLocacaoVeiculo
             }
         }
 
-        private void txt_valor_diaria_cadastro_KeyPress(object sender, KeyPressEventArgs e)
+        private void Txt_valor_diaria_cadastro_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Metodo ppara verificar se o valor digitado em uma letra
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }
+
             //if (e.KeyChar < 47 || e.KeyChar > 58)
             //{
             //    e.KeyChar = (Char)0;
             //}
         }
 
-        private void txt_valor_diaria_cadastro_TextChanged(object sender, EventArgs e)
+        private void Txt_valor_diaria_cadastro_TextChanged(object sender, EventArgs e)
         {
             //    //decimal valor = txt_valor_diaria_cadastro.Text;
             //    string result = String.Format("{0:C2}", txt_valor_diaria_cadastro.Text);

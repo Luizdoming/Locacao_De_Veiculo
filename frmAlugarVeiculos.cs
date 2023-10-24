@@ -11,7 +11,7 @@ namespace SistemaLocacaoVeiculo
             InitializeComponent();
         }
 
-        private void frmCadVeiculos_Load(object sender, EventArgs e)
+        private void FrmCadVeiculos_Load(object sender, EventArgs e)
         {
             //Campos para permitir somente leitura dos dados, não a inserção
             this.txt_TotalLocacao.ReadOnly = true;
@@ -26,7 +26,7 @@ namespace SistemaLocacaoVeiculo
             txt_NomeClienteLocacao.Focus();
         }
 
-        private void btn_abrir_tela_veiculosCadastrados_Click(object sender, EventArgs e)
+        private void Btn_abrir_tela_veiculosCadastrados_Click(object sender, EventArgs e)
         {
             frm_Veiculos_Cadastrados frm = new frm_Veiculos_Cadastrados();
             this.Hide();
@@ -34,7 +34,7 @@ namespace SistemaLocacaoVeiculo
             this.Dispose();
         }
 
-        private void numeric_Alugar_Veiculos_ValueChanged(object sender, EventArgs e)
+        private void Numeric_Alugar_Veiculos_ValueChanged(object sender, EventArgs e)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace SistemaLocacaoVeiculo
 
         }
 
-        private void btn_AbrirF_Valugados_Click(object sender, EventArgs e)
+        private void Btn_AbrirF_Valugados_Click(object sender, EventArgs e)
         {
             using (frmVeiculosAlugados frm = new frmVeiculosAlugados())
             {
@@ -67,7 +67,7 @@ namespace SistemaLocacaoVeiculo
             }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void Guna2Button1_Click(object sender, EventArgs e)
         {
 
             foreach (Control controles in this.Controls)
